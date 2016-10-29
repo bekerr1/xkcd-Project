@@ -1,0 +1,6 @@
+framework module Pods_xkcdProjectTests {
+  umbrella header "Pods-xkcdProjectTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
