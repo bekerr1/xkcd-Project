@@ -99,19 +99,19 @@ class XKTableViewController: UITableViewController {
             //Did this becuase when the image is being loaded for the first time there was a split
             //second where the last image loaded was being shown.  Dr. Shehab explained dequed cells
             //and i believe becuase of the nature of dequeing cells this is the reason why.
-            cell.imageView?.image = nil
+            
             
             if let cellImageData = imageCache.object(forKey: cellData.title as NSString) as? Data {
                 let image = UIImage(data: cellImageData)
                 cell.imageView?.image = image
             } else {
+                cell.imageView?.image = nil
                 webService.fetchImage(fromURL: cellData.imageSource) { data in
                     cell.imageView?.image = UIImage(data: data)
                     self.imageCache.setObject(data as NSData, forKey: cellData.title as NSString)
                     tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
-            cell.imageView?.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: titleCellReuse, for: indexPath) as! XKTitleTableViewCell
