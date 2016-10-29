@@ -90,29 +90,30 @@ class XKTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
+        var cell: UITableViewCell!
         
         let cellData = images[indexPath.row]
         if cellData.displayingImage {
-            cell = tableView.dequeueReusableCell(withIdentifier: imageCellReuse, for: indexPath) as! XKImageTableViewCell
-            
-            //Did this becuase when the image is being loaded for the first time there was a split
-            //second where the last image loaded was being shown.  Dr. Shehab explained dequed cells
-            //and i believe becuase of the nature of dequeing cells this is the reason why.
+            let imageCell = tableView.dequeueReusableCell(withIdentifier: imageCellReuse, for: indexPath) as! XKImageTableViewCell
             
             
             if let cellImageData = imageCache.object(forKey: cellData.title as NSString) as? Data {
                 let image = UIImage(data: cellImageData)
-                cell.imageView?.image = image
+                imageCell.xkcdImage.image = image
             } else {
-                cell.imageView?.image = nil
+                
+                //Did this becuase when the image is being loaded for the first time there was a split
+                //second where the last image loaded was being shown.  Dr. Shehab explained dequed cells
+                //and i believe becuase of the nature of dequeing cells this is the reason why.
+                imageCell.xkcdImage.image = nil
+                
                 webService.fetchImage(fromURL: cellData.imageSource) { data in
-                    cell.imageView?.image = UIImage(data: data)
+                    imageCell.xkcdImage.image = UIImage(data: data)
                     self.imageCache.setObject(data as NSData, forKey: cellData.title as NSString)
                     tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
-            
+            cell = imageCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: titleCellReuse, for: indexPath) as! XKTitleTableViewCell
             cell.textLabel?.text = cellData.title
@@ -137,6 +138,8 @@ class XKTableViewController: UITableViewController {
         }
         return 44
     }
+    
+    
 
 }
 
