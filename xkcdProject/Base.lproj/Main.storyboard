@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uEz-Gu-Fux">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FaY-K2-liJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Images-->
         <scene sceneID="aF1-qQ-8WQ">
             <objects>
                 <tableViewController id="uEz-Gu-Fux" customClass="XKTableViewController" customModule="xkcdProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="titleCell" id="PO4-n3-SSR" customClass="XKTitleTableViewCell" customModule="xkcdProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PO4-n3-SSR" id="eC4-0d-3e2">
                                     <frame key="frameInset" width="375" height="44"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="114" id="vq7-9q-SAN" customClass="XKImageTableViewCell" customModule="xkcdProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="114"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vq7-9q-SAN" id="1IV-Ks-Eel">
                                     <frame key="frameInset" width="375" height="113"/>
@@ -65,8 +65,27 @@
                             <outlet property="delegate" destination="uEz-Gu-Fux" id="7c2-KS-C0n"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Images" id="hzv-NP-qhJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbT-uW-bFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="1.3493253373313345"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hL0-Ye-TEx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FaY-K2-liJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jzb-Wh-f6l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uEz-Gu-Fux" kind="relationship" relationship="rootViewController" id="P5A-Xs-QUc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W7u-zR-Tsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="1.3493253373313345"/>
         </scene>
