@@ -115,8 +115,9 @@ class XKTableViewController: UITableViewController {
             }
             cell = imageCell
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: titleCellReuse, for: indexPath) as! XKTitleTableViewCell
-            cell.textLabel?.text = cellData.title
+            let titleCell = tableView.dequeueReusableCell(withIdentifier: titleCellReuse, for: indexPath) as! XKTitleTableViewCell
+            titleCell.imageTitle.text = cellData.title
+            cell = titleCell
         }
 
         print("CELLIMAGESIZE: \(cell.imageView?.frame)")
